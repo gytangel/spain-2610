@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西班牙家庭旅行计划 — 2026年9月至10月</title>
+<style>
+:root{
+  --bg:#f6f3ed;
+  --card:#fff;
+  --ink:#20242b;
+  --muted:#70757f;
+  --line:#ddd7cd;
+  --accent:#a54836;
+  --accent-soft:#f3e6e1;
+  --blue:#365b73;
+  --blue-soft:#e8eef3;
+  --green:#3f6654;
+  --green-soft:#e7f0eb;
+  --amber:#80622f;
+  --amber-soft:#f4ebdb;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  line-height:1.45;
+}
+.shell{
+  max-width:1040px;
+  margin:0 auto;
+  padding:24px 18px 60px;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  align-items:flex-start;
+  margin-bottom:18px;
+}
+.kicker{
+  color:var(--accent);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:800;
+}
+h1{
+  font-size:34px;
+  line-height:1.05;
+  margin:4px 0 6px;
+}
+.sub{
+  color:var(--muted);
+  font-size:14px;
+}
+.pills{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+.pill{
+  padding:6px 9px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-size:11px;
+  font-weight:700;
+}
+.main-tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:20;
+  padding:10px 0;
+  background:linear-gradient(var(--bg) 72%,rgba(246,243,237,0));
+}
+.main-tab{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  border-radius:999px;
+  padding:8px 13px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+.main-tab.active{
+  color:#fff;
+  background:var(--ink);
+  border-color:var(--ink);
+}
+.panel{display:none}
+.panel.active{display:block}
+
+.day-strip{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+  padding:4px 1px 12px;
+}
+.day-chip{
+  width:100%;
+  min-width:0;
+  text-align:left;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:11px 12px;
+  cursor:pointer;
+}
+.day-chip.active{
+  border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(165,72,54,.08);
+}
+.day-chip .d1{
+  font-size:11px;
+  color:var(--muted);
+  font-weight:700;
+}
+.day-chip .d2{
+  font-size:14px;
+  font-weight:800;
+  margin-top:2px;
+}
+.day-chip .d3{
+  font-size:11px;
+  color:var(--muted);
+  margin-top:2px;
+}
+.day-panel{display:none}
+.day-panel.active{display:block}
+
+.hero-card{
+  background:linear-gradient(135deg,#fff,#f4ece4);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px;
+  margin:4px 0 14px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr;
+  gap:16px;
+  align-items:start;
+}
+.hero-card h2{
+  margin:3px 0 5px;
+  font-size:23px;
+}
+.route-line{
+  font-size:13px;
+  color:var(--muted);
+}
+.quick-stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+}
+.stat{
+  background:rgba(255,255,255,.75);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:9px 10px;
+}
+.stat b{
+  display:block;
+  font-size:12px;
+}
+.stat span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.itinerary{
+  display:grid;
+  gap:8px;
+}
+.stop{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+}
+.stop-head{
+  display:grid;
+  grid-template-columns:78px 1fr auto;
+  gap:10px;
+  align-items:center;
+  padding:12px 14px;
+}
+.time{
+  color:var(--accent);
+  font-weight:850;
+  font-size:13px;
+}
+.stop-title{
+  font-weight:800;
+  font-size:14px;
+}
+.stop-meta{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:2px;
+}
+.mode{
+  font-size:10px;
+  font-weight:800;
+  border-radius:999px;
+  padding:5px 8px;
+  white-space:nowrap;
+}
+.walk{background:var(--green-soft);color:var(--green)}
+.bus{background:var(--blue-soft);color:var(--blue)}
+.taxi{background:var(--amber-soft);color:var(--amber)}
+.car{background:var(--blue-soft);color:var(--blue)}
+.museum{background:var(--accent-soft);color:var(--accent)}
+.details{
+  border-top:1px solid var(--line);
+  padding:0 14px 12px;
+  color:var(--muted);
+  font-size:12px;
+}
+.details summary{
+  cursor:pointer;
+  color:var(--blue);
+  font-weight:750;
+  padding:9px 0 5px;
+  list-style:none;
+}
+.details summary::-webkit-details-marker{display:none}
+.details p{margin:5px 0}
+
+.section-title{
+  font-size:17px;
+  margin:22px 0 10px;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:13px 14px;
+}
+.card h3{
+  font-size:14px;
+  margin:0 0 5px;
+}
+.card p{
+  font-size:12px;
+  color:var(--muted);
+  margin:0;
+}
+.compact-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+}
+.compact-table th,.compact-table td{
+  padding:10px 12px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  font-size:12px;
+  vertical-align:top;
+}
+.compact-table th{
+  width:150px;
+  color:var(--blue);
+  background:#faf9f6;
+}
+.compact-table tr:last-child th,.compact-table tr:last-child td{border-bottom:0}
+
+.placeholder{
+  border:1px dashed #c7c0b5;
+  background:rgba(255,255,255,.45);
+  border-radius:16px;
+  padding:18px;
+  color:var(--muted);
+  font-size:13px;
+}
+.note{
+  background:#fff;
+  border:1px solid var(--line);
+  border-left:4px solid var(--accent);
+  border-radius:12px;
+  padding:12px 14px;
+  font-size:12px;
+  color:var(--muted);
+}
+.hotel-note{
+  background:var(--blue-soft);
+  border-left-color:var(--blue);
+  color:var(--ink);
+}
+.footer{
+  margin-top:28px;
+  color:var(--muted);
+  font-size:10px;
+}
+a{color:var(--blue)}
+@media(max-width:900px){
+  .day-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:720px){
+  .shell{padding:16px 12px 42px}
+  h1{font-size:29px}
+  .hero-grid{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .day-strip{grid-template-columns:1fr}
+  .stop-head{grid-template-columns:68px 1fr}
+  .stop-head .mode{grid-column:2;justify-self:start}
+  .topbar{display:block}
+}
+@media print{
+  body{background:#fff}
+  .main-tabs,.day-strip{display:none}
+  .panel,.day-panel{display:block!important}
+  .shell{max-width:none;padding:0}
+}
+
+.energy{
+  display:inline-block;
+  margin-left:6px;
+  padding:3px 7px;
+  border-radius:999px;
+  font-size:9px;
+  font-weight:850;
+  vertical-align:middle;
+}
+.energy-auto{background:#e7f0eb;color:#3f6654}
+.energy-opt{background:#f4ebdb;color:#80622f}
+.energy-rest{background:#f1e8e6;color:#8a4d42}
+
+.meal{background:#f7e7f0;color:#8a3f68}
+
+.transport-day{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  margin:10px 0;
+  overflow:hidden;
+}
+.transport-day summary{
+  cursor:pointer;
+  list-style:none;
+  padding:13px 14px;
+  font-size:14px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:#faf9f6;
+}
+.transport-day summary::-webkit-details-marker{display:none}
+.transport-day summary::after{
+  content:'＋';
+  color:var(--muted);
+  font-size:18px;
+  line-height:1;
+}
+.transport-day[open] summary::after{content:'−'}
+.transport-day .compact-table{
+  border:0;
+  border-top:1px solid var(--line);
+  border-radius:0;
+}
+.transport-count{
+  color:var(--muted);
+  font-size:11px;
+  font-weight:700;
+  margin-left:auto;
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="topbar">
+    <div>
+      <div class="kicker">西班牙家庭旅行 · 2026</div>
+      <h1>旅行计划</h1>
+      <div class="sub">Madrid → Toledo → Segovia → Córdoba → Sevilla → Ronda → Granada → Barcelona</div>
+      <div class="pills">
+        <span class="pill">4人同行</span>
+        <span class="pill">9月27日 – 10月9日</span>
+        <span class="pill">古城 · 文化 · 徒步</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-tabs">
+    <button class="main-tab active" data-panel="days">每日行程</button>
+    <button class="main-tab" data-panel="transport">交通汇总</button>
+    <button class="main-tab" data-panel="essentials">重要事项</button>
+  </nav>
+
+  <section id="days" class="panel active">
+    <div class="day-strip">
+      <button class="day-chip active" data-day="day1">
+        <div class="d1">周日 · 9月27日</div>
+        <div class="d2">第1天 · 马德里</div>
+        <div class="d3">抵达 · 普拉多博物馆 · 日落</div>
+      </button>
+      <button class="day-chip" data-day="day2">
+        <div class="d1">周一 · 9月28日</div>
+        <div class="d2">第2天 · 托莱多</div>
+        <div class="d3">古城 · 日落</div>
+      </button>
+      <button class="day-chip" data-day="day3">
+        <div class="d1">周二 · 9月29日</div>
+        <div class="d2">第3天 · 塞哥维亚</div>
+        <div class="d3">塞哥维亚 · 摩尔人花园</div>
+      </button>
+      <button class="day-chip" data-day="day4">
+        <div class="d1">周三 · 9月30日</div>
+        <div class="d2">第4天 · 科尔多瓦 → 塞维利亚</div>
+        <div class="d3">皇宫备选 · 科尔多瓦中转</div>
+      </button>
+      <button class="day-chip" data-day="day5">
+        <div class="d1">周四 · 10月1日</div>
+        <div class="d2">第5天 · 塞维利亚</div>
+        <div class="d3">王宫 · 主教座堂 · 河畔日落</div>
+      </button>
+      <button class="day-chip" data-day="day6">
+        <div class="d1">周五 · 10月2日</div>
+        <div class="d2">第6天 · 塞维利亚 → 龙达</div>
+        <div class="d3">白色小镇自驾 · 龙达</div>
+      </button>
+      <button class="day-chip" data-day="day7">
+        <div class="d1">周六 · 10月3日</div>
+        <div class="d2">第7天 · 龙达 → 格拉纳达</div>
+        <div class="d3">龙达观景台 · 11:50 国王步道</div>
+      </button>
+      <button class="day-chip" data-day="day8">
+        <div class="d1">周日 · 10月4日</div>
+        <div class="d2">第8天 · 格拉纳达</div>
+        <div class="d3">阿尔拜辛 · 14:30 阿尔罕布拉宫</div>
+      </button>
+      <button class="day-chip" data-day="day9">
+        <div class="d1">周一 · 10月5日</div>
+        <div class="d2">第9天 · 格拉纳达 → 巴塞罗那</div>
+        <div class="d3">交通日 · 哥特区夜游</div>
+      </button>
+      <button class="day-chip" data-day="day10">
+        <div class="d1">周二 · 10月6日</div>
+        <div class="d2">第10天 · 巴塞罗那</div>
+        <div class="d3">高迪建筑 · 现代主义</div>
+      </button>
+      <button class="day-chip" data-day="day11">
+        <div class="d1">周三 · 10月7日</div>
+        <div class="d2">第11天 · 布拉瓦海岸</div>
+        <div class="d3">Marimurtra植物园 · 海滩 · Tossa</div>
+      </button>
+      <button class="day-chip" data-day="day12">
+        <div class="d1">周四 · 10月8日</div>
+        <div class="d2">第12天 · 巴塞罗那 → 马德里</div>
+        <div class="d3">圣保罗医院 · 蒙特惠奇山备选</div>
+      </button>
+    </div>
+
+    <div id="day1" class="day-panel active">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第1天</div>
+            <h2>马德里抵达日</h2>
+            <div class="route-line">机场 → 酒店 → La Rollerie Atocha早午餐 → 丽池公园 → 阿尔卡拉门 → 西贝莱斯广场 → 海神喷泉 → 普拉多博物馆 → 西班牙广场 → 德波神庙日落 → 东方广场及皇宫外观 → 马约尔广场 → 晚餐</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>抵达</b><span>08:40</span></div>
+            <div class="stat"><b>普拉多</b><span>~15:00 付费入场</span></div>
+            <div class="stat"><b>日落</b><span>~20:03</span></div>
+            <div class="stat"><b>主要交通</b><span>EMT 001</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · STYLISH NEST 1BD PLAZA MAYOR - SOL
+Calle de Santa Isabel, 26, Madrid City Center, 28012 Madrid, Spain</div>
+      <div class="note" style="margin-bottom:12px">抵达日以轻松为主。La Rollerie Atocha 11:30订位固定；沿途景点以短暂停留为主。德波神庙看完日落后经皇宫外观和马约尔广场前往21:00晚餐。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:40</div><div><div class="stop-title">抵达马德里巴拉哈斯机场</div><div class="stop-meta">入境 · 取行李 · 集合</div></div><span class="mode taxi">机场</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">10:20</div><div><div class="stop-title">机场 → 酒店</div><div class="stop-meta">Calle de Santa Isabel 26 · 放行李</div></div><span class="mode taxi">出租车 · 30–40分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">11:30</div><div><div class="stop-title">早午餐 · La Rollerie Atocha（已订）</div><div class="stop-meta">Calle de Atocha 20 · 11:30订位</div></div><span class="mode meal">早午餐 · 已订</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">12:25</div><div><div class="stop-title">La Rollerie → 丽池公园</div><div class="stop-meta">餐后向东步行至公园</div></div><span class="mode walk">步行 · 约18–20分钟</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:45</div><div><div class="stop-title">丽池公园 El Retiro</div><div class="stop-meta">湖泊及阿方索十二世纪念碑</div></div><span class="mode walk">约75–85分钟</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">14:05</div><div><div class="stop-title">阿尔卡拉门（顺路）</div><div class="stop-meta">快速拍照</div></div><span class="mode walk">步行 · 约5分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">14:20</div><div><div class="stop-title">西贝莱斯广场（顺路）</div><div class="stop-meta">短暂停留拍照</div></div><span class="mode walk">步行 · 8–10分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">14:35</div><div><div class="stop-title">海神喷泉（顺路）</div><div class="stop-meta">进普拉多前快速拍照</div></div><span class="mode walk">步行 · 约5分钟</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">15:00</div><div><div class="stop-title">普拉多博物馆</div><div class="stop-meta">付费定时票 · 目标15:00 · 提前约10分钟抵达 · 参观2–2.5小时</div></div><span class="mode museum">博物馆</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">17:50</div><div><div class="stop-title">普拉多 → 西班牙广场</div><div class="stop-meta">在Museo del Prado–Jardín Botánico站上车</div></div><span class="mode bus">EMT 001 · 20–25分钟</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">18:25</div><div><div class="stop-title">西班牙广场（顺路）</div><div class="stop-meta">前往德波神庙前停留10分钟</div></div><span class="mode walk">步行</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">18:35</div><div><div class="stop-title">德波神庙</div><div class="stop-meta">观景台及日落</div></div><span class="mode walk">步行 · 8–10分钟</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">20:10</div><div><div class="stop-title">德波神庙 → 东方广场及皇宫外观（顺路）</div><div class="stop-meta">步行至皇宫，在广场和外观停留约10分钟</div></div><span class="mode walk">共约25分钟</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">~20:45</div><div><div class="stop-title">马约尔广场（顺路）</div><div class="stop-meta">晚餐前快速经过</div></div><span class="mode walk">约5分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">~20:50</div><div><div class="stop-title">马约尔广场 → Cava Baja</div><div class="stop-meta">步行进入La Latina晚餐</div></div><span class="mode walk">步行 · 8–10分钟</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">21:00</div><div><div class="stop-title">晚餐 · La Taberna de Peñalver（已订）</div><div class="stop-meta">Calle de la Cava Baja 36 · La Latina</div></div><span class="mode meal">晚餐 · 已订</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">After dinner</div><div><div class="stop-title">Cava Baja → 酒店</div><div class="stop-meta">有体力就步行；时差疲劳则乘出租车/Cabify</div></div><span class="mode walk">步行 · 18–22分钟</span></div></div>
+      </div>
+    </div>
+
+    <div id="day2" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第2天</div>
+            <h2>托莱多一日游</h2>
+            <div class="route-line">早餐 → 太阳门广场 → Atocha火车站 → 托莱多 → 比萨格拉门 → 光明基督清真寺 → Zocodover广场及城堡外观 → 犹太区 → 圣马丁桥 → 主教座堂及弥撒 → 山谷观景台日落 → 马德里</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>去程火车</b><span>10:15 → 10:49</span></div>
+            <div class="stat"><b>主教座堂</b><span>16:00</span></div>
+            <div class="stat"><b>弥撒</b><span>17:30</span></div>
+            <div class="stat"><b>日落</b><span>~20:03</span></div>
+            <div class="stat"><b>返程火车</b><span>21:37 → 22:15</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · STYLISH NEST 1BD PLAZA MAYOR - SOL
+Calle de Santa Isabel, 26, Madrid City Center, 28012 Madrid, Spain</div>
+      <div class="note" style="margin-bottom:12px">周一Alcázar及军事博物馆闭馆，只看外观。抵达后在第一个参与景点购买Toledo Monumental联票；16:00进主教座堂，17:30参加弥撒。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:15</div><div><div class="stop-title">早餐1 · Bocadillos Oink Arenal</div><div class="stop-meta">Calle del Arenal 14 · 快速吃火腿三明治</div></div><span class="mode meal">15–20分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:35</div><div><div class="stop-title">早餐2 · Chocolatería San Ginés</div><div class="stop-meta">Pasadizo de San Ginés 5 · 巧克力油条</div></div><span class="mode meal">25–30分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:05</div><div><div class="stop-title">太阳门广场 Puerta del Sol</div><div class="stop-meta">零公里标志及熊与草莓树雕像</div></div><span class="mode walk">约15分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:25</div><div><div class="stop-title">Sol → Atocha</div><div class="stop-meta">乘Cercanías C3或C4到Atocha，再按指示前往Puerta de Atocha-A</div></div><span class="mode bus">C3 / C4近郊火车</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">10:15</div><div><div class="stop-title">Renfe Avant · 马德里Atocha → 托莱多</div><div class="stop-meta">已订 · 10:49抵达</div></div><span class="mode bus">火车 · 34分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">10:55</div><div><div class="stop-title">托莱多站 → 比萨格拉门</div><div class="stop-meta">在Paseo de la Rosa（RENFE）乘L61或L62，于Puerta de Bisagra下车</div></div><span class="mode bus">公交L61/L62 · 10–15分钟</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">11:15</div><div><div class="stop-title">比萨格拉门 Puerta de Bisagra</div><div class="stop-meta">托莱多历史城门</div></div><span class="mode walk">约10分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">11:30</div><div><div class="stop-title">太阳门 Puerta del Sol</div><div class="stop-meta">快速经过，再步行几分钟前往Cristo de la Luz</div></div><span class="mode walk">步行 · 约5分钟</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">11:40</div><div><div class="stop-title">光明基督清真寺（联票）</div><div class="stop-meta">第一个联票景点 · 在此购买€14 Toledo Monumental手环</div></div><span class="mode museum">约20分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:05</div><div><div class="stop-title">Zocodover广场及Alcázar外观（顺路）</div><div class="stop-meta">周一只看外观</div></div><span class="mode walk">约20分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:25</div><div><div class="stop-title">Materia Pedro Trujillo（顺路）</div><div class="stop-meta">C. del Comercio 3 · 快速吃芝士蛋糕或外带</div></div><span class="mode meal">甜点 · 10–15分钟</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">12:45</div><div><div class="stop-title">午餐</div><div class="stop-meta">控制在40–45分钟，确保16:00主教座堂</div></div><span class="mode meal">午餐</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">13:35</div><div><div class="stop-title">耶稣会教堂 San Ildefonso（联票）</div><div class="stop-meta">巴洛克教堂及塔楼观景台 · 简短参观</div></div><span class="mode museum">约20分钟</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">14:05</div><div><div class="stop-title">Santo Tomé教堂（联票）</div><div class="stop-meta">格列柯名作《奥尔加斯伯爵的葬礼》</div></div><span class="mode museum">约20分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">14:35</div><div><div class="stop-title">Santa María la Blanca犹太教堂（联票）</div><div class="stop-meta">犹太区内简短参观</div></div><span class="mode museum">约20分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">15:00</div><div><div class="stop-title">San Juan de los Reyes修道院（联票）</div><div class="stop-meta">回廊及晚期哥特式建筑</div></div><span class="mode museum">25–30分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">15:30</div><div><div class="stop-title">圣马丁桥</div><div class="stop-meta">观光路线西端 · 快速拍照</div></div><span class="mode walk">约10分钟</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">15:40</div><div><div class="stop-title">返回主教座堂</div><div class="stop-meta">有出租车就乘车，否则快步走</div></div><span class="mode taxi">出租车/步行 · 10–15分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">16:00</div><div><div class="stop-title">托莱多主教座堂（固定）</div><div class="stop-meta">主要文化景点 · 门票不含在联票内</div></div><span class="mode museum">45–55分钟</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">17:15</div><div><div class="stop-title">提前就座参加弥撒（固定）</div><div class="stop-meta">Sagrario圣母礼拜堂 · 提前抵达</div></div><span class="mode museum">礼拜</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">17:30</div><div><div class="stop-title">弥撒 · Sagrario圣母礼拜堂</div><div class="stop-meta">参加礼拜无需游客票 · 约40–45分钟</div></div><span class="mode museum">弥撒</span></div>
+          </div>
+        <div class="stop"><div class="stop-head"><div class="time">18:20</div><div><div class="stop-title">早晚餐 / Tapas</div><div class="stop-meta">在主教座堂或Zocodover附近，选择上菜快的餐厅</div></div><span class="mode meal">晚餐 · 35–40分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">19:00</div><div><div class="stop-title">古城 → 山谷观景台</div><div class="stop-meta">避免长距离上坡步行</div></div><span class="mode taxi">出租车 · 10–15分钟</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">19:15</div><div><div class="stop-title">山谷观景台 Mirador del Valle</div><div class="stop-meta">黄金时段 · 20:03左右日落</div></div><span class="mode walk">日落</span></div></div>
+        <div class="stop"><div class="stop-head"><div class="time">20:15</div><div><div class="stop-title">观景台 → 托莱多火车站</div><div class="stop-meta">直接前往车站</div></div><span class="mode taxi">出租车 · 10–15分钟</span></div></div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">21:37</div><div><div class="stop-title">Renfe Avant · 托莱多 → 马德里Atocha</div><div class="stop-meta">已订 · 22:15抵达</div></div><span class="mode bus">火车</span></div>
+          </div>
+      </div>
+    </div>
+
+    <div id="day3" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第3天</div>
+            <h2>塞哥维亚及马德里夜游</h2>
+            <div class="route-line">Chamartín火车站 → 塞哥维亚 → 古罗马水道桥 → 大教堂 → 塞哥维亚城堡 → 午餐 → 马德里 → 摩尔人花园 → Lana晚餐 → 格兰大道夜游</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>去程火车</b><span>08:40 → 09:07 · 已订</span></div>
+            <div class="stat"><b>塞哥维亚重点</b><span>主教座堂及城堡内部</span></div>
+            <div class="stat"><b>返程火车</b><span>16:39 → 17:06 · 已订</span></div>
+            <div class="stat"><b>马德里日落</b><span>~20:00</span></div>
+            <div class="stat"><b>晚餐</b><span>20:30 · Lana</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · STYLISH NEST 1BD PLAZA MAYOR - SOL
+Calle de Santa Isabel, 26, Madrid City Center, 28012 Madrid, Spain</div>
+      <div class="note" style="margin-bottom:12px">往返火车已订。优先参观塞哥维亚城堡内部；Juan II塔楼视体力决定。回马德里后前往摩尔人花园，20:30晚餐。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">07:15</div><div><div class="stop-title">马德里早餐</div><div class="stop-meta">酒店附近简单早餐后前往Chamartín</div></div><span class="mode meal">早餐</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~07:50</div><div><div class="stop-title">酒店 → Madrid Chamartín-Clara Campoamor</div><div class="stop-meta">预留找站台和上车时间</div></div><span class="mode taxi">出租车/近郊火车</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:40</div><div><div class="stop-title">Renfe · Madrid Chamartín → Segovia Guiomar（已订）</div><div class="stop-meta">09:07抵达Segovia Guiomar</div></div><span class="mode bus">火车 · 27分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~09:10</div><div><div class="stop-title">Segovia Guiomar → 古罗马水道桥</div><div class="stop-meta">Guiomar车站位于古城外</div></div><span class="mode taxi">公交/出租车 · 15–20分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:35</div><div><div class="stop-title">塞哥维亚古罗马水道桥</div><div class="stop-meta">Azoguejo广场及高处观景点</div></div><span class="mode walk">约40分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">10:20</div><div><div class="stop-title">尖顶之家及Calle Real</div><div class="stop-meta">水道桥至马约尔广场之间顺路停留</div></div><span class="mode walk">约15分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">10:40</div><div><div class="stop-title">San Martín教堂及Medina del Campo广场</div><div class="stop-meta">建筑及拍照短停</div></div><span class="mode walk">约15分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">11:05</div><div><div class="stop-title">塞哥维亚主教座堂</div><div class="stop-meta">参观大教堂内部</div></div><span class="mode museum">45–55分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:05</div><div><div class="stop-title">主教座堂 → 塞哥维亚城堡</div><div class="stop-meta">沿Calle Marqués del Arco轻松步行</div></div><span class="mode walk">步行 · 约10分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:20</div><div><div class="stop-title">塞哥维亚城堡内部（建议网上购票）</div><div class="stop-meta">重点参观宫殿和博物馆 · Juan II塔楼视体力决定</div></div><span class="mode museum">90–105分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~14:10</div><div><div class="stop-title">塞哥维亚午餐</div><div class="stop-meta">城堡后正式坐下用餐</div></div><span class="mode meal">60–70分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~15:25</div><div><div class="stop-title">古城 → Segovia Guiomar</div><div class="stop-meta">乘出租车并保留充足上车时间</div></div><span class="mode taxi">出租车 · 15–20分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">16:39</div><div><div class="stop-title">Renfe · Segovia Guiomar → Madrid Chamartín（已订）</div><div class="stop-meta">17:06抵达Madrid Chamartín</div></div><span class="mode bus">火车 · 27分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">17:06</div><div><div class="stop-title">抵达Madrid Chamartín</div><div class="stop-meta">出站后乘出租车前往Campo del Moro</div></div><span class="mode bus">火车</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~17:20</div><div><div class="stop-title">Madrid Chamartín → 摩尔人花园（可选）</div><div class="stop-meta">出租车直达Cuesta de San Vicente / Príncipe Pío入口</div></div><span class="mode taxi">出租车 · 15–25分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~17:45</div><div><div class="stop-title">摩尔人花园 Campo del Moro</div><div class="stop-meta">轻松散步 · 约20:00日落 · 花园20:00关闭</div></div><span class="mode walk">60–75分钟</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~19:20</div><div><div class="stop-title">摩尔人花园 → Calle Ponzano</div><div class="stop-meta">向北前往Chamberí，预留晚餐时间</div></div><span class="mode taxi">出租车 · 20–30分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">20:30</div><div><div class="stop-title">晚餐 · Lana Parrilla Argentina（已订）</div><div class="stop-meta">Calle Ponzano 59 · 28003 Madrid</div></div><span class="mode meal">晚餐 · 已订</span></div>
+          </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~22:00</div><div><div class="stop-title">Lana → Gran Vía / Callao</div><div class="stop-meta">晚餐后返回马德里市中心</div></div><span class="mode taxi">地铁/出租车 · 15–20分钟</span></div>
+        </div>
+        <div class="stop">
+          <div class="stop-head"><div class="time">~22:20</div><div><div class="stop-title">格兰大道及Callao夜游</div><div class="stop-meta">灯光建筑、剧院、Capitol/Schweppes招牌及夜间氛围</div></div><span class="mode walk">40–60分钟</span></div>
+          </div>
+      </div>
+    </div>
+
+    <div id="day4" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第4天</div>
+            <h2>马德里 → 科尔多瓦 → 塞维利亚</h2>
+            <div class="route-line">Atocha寄存行李 → 马德里皇宫现场票备选 → Atocha → 科尔多瓦犹太区 → 百花巷 → 清真寺主教座堂 → 古罗马桥 → 塞维利亚 → Palacio Pinello酒店</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>皇宫计划</b><span>留意放票 · 现场排队备选</span></div>
+            <div class="stat"><b>马德里出发火车</b><span>13:00 → 14:44 · 已订</span></div>
+            <div class="stat"><b>清真寺主教座堂</b><span>16:30 已订</span></div>
+            <div class="stat"><b>科尔多瓦火车</b><span>19:04 → Sevilla · 已订</span></div>
+            <div class="stat"><b>住宿</b><span>Palacio Pinello · Sevilla</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · Palacio Pinello
+Segovias, 1, Old Town, 41004 Seville, Spain</div>
+      <div class="note" style="margin-bottom:12px">13:00马德里至科尔多瓦火车已订。皇宫若没有10:00线上票，可尝试09:30现场排队，但10:15必须离开。科尔多瓦16:30清真寺主教座堂门票固定。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">~08:45</div><div><div class="stop-title">退房并在Madrid-Atocha附近寄存行李</div><div class="stop-meta">大件行李全部放在车站附近，方便稍后出发</div></div><span class="mode taxi">行李</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~09:05</div><div><div class="stop-title">Atocha → 马德里皇宫</div><div class="stop-meta">只带小包轻装出行</div></div><span class="mode taxi">出租车/地铁 · 20–25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~09:30</div><div><div class="stop-title">皇宫查票 / 现场排队备选</div><div class="stop-meta">若刷到10:00线上票则使用；否则评估现场队伍</div></div><span class="mode museum">最晚10:15离开</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:00</div><div><div class="stop-title">马德里皇宫（仅有票时）</div><div class="stop-meta">重点自助参观 · 先看国事厅</div></div><span class="mode museum">60–75分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:15</div><div><div class="stop-title">东方广场及皇宫外观</div><div class="stop-meta">白天快速看外观；第1天已有夜景</div></div><span class="mode walk">10–15分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:30</div><div><div class="stop-title">皇宫区域 → Madrid-Atocha</div><div class="stop-meta">回去取行李并准备前往科尔多瓦</div></div><span class="mode taxi">出租车 · 20–25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~12:00</div><div><div class="stop-title">取行李并买火车简餐</div><div class="stop-meta">简单午餐，提前过安检并候车</div></div><span class="mode meal">简餐及缓冲</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">13:00</div><div><div class="stop-title">Madrid-Atocha → Córdoba（已订）</div><div class="stop-meta">直达高铁 · 14:44抵达</div></div><span class="mode bus">火车 · 1小时44分</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">14:44</div><div><div class="stop-title">抵达科尔多瓦并寄存行李</div><div class="stop-meta">步行至相邻汽车站寄存柜；使用已预订XL柜，只带小包</div></div><span class="mode taxi">行李 · 15–20分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~15:05</div><div><div class="stop-title">科尔多瓦汽车站 → 犹太区</div><div class="stop-meta">出租车直达古城核心；12路公交为备选</div></div><span class="mode taxi">出租车 · 10–15分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~15:20</div><div><div class="stop-title">科尔多瓦犹太区及百花巷</div><div class="stop-meta">在白色小巷简短散步；约16:15到清真寺入口</div></div><span class="mode walk">40–45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">16:30</div><div><div class="stop-title">科尔多瓦清真寺主教座堂（已订）</div><div class="stop-meta">16:30确认入场 · 科尔多瓦主要室内景点</div></div><span class="mode museum">约60分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~17:30</div><div><div class="stop-title">手帕巷 Calleja del Pañuelo（顺路）</div><div class="stop-meta">清真寺旁快速看一眼</div></div><span class="mode walk">约5分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~17:40</div><div><div class="stop-title">科尔多瓦古罗马桥</div><div class="stop-meta">走上桥看河流及清真寺经典景观</div></div><span class="mode walk">约20分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~18:10–18:15</div><div><div class="stop-title">古城 → 科尔多瓦车站（必须离开）</div><div class="stop-meta">在Calle Torrijos出租车站乘车，取行李并留足上车时间</div></div><span class="mode taxi">出租车 · 10–15分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">19:04</div><div><div class="stop-title">Córdoba → Sevilla-Santa Justa（已订）</div><div class="stop-meta">已确认晚间班次</div></div><span class="mode bus">火车</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~20:00</div><div><div class="stop-title">抵达塞维利亚 → Palacio Pinello酒店</div><div class="stop-meta">乘出租车入住并稍作休息</div></div><span class="mode taxi">出租车 · 15–20分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~20:45–21:00</div><div><div class="stop-title">塞维利亚晚餐</div><div class="stop-meta">在Palacio Pinello / Santa Cruz附近解决；次日完整游览</div></div><span class="mode meal">晚餐</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="day5" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第5天</div>
+            <h2>塞维利亚一日游</h2>
+            <div class="route-line">Palacio Pinello → 西班牙广场 → 玛丽亚路易莎公园 → 西印度群岛档案馆 → 主教座堂及吉拉达塔 → 午餐 → 塞维利亚王宫 → 黄金塔 → 河畔 → Triana日落及晚餐</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>王宫</b><span>14:30 目标 · 重购4张</span></div>
+            <div class="stat"><b>主教座堂</b><span>12:25 · 已订</span></div>
+            <div class="stat"><b>日落</b><span>~20:08</span></div>
+            <div class="stat"><b>晚餐</b><span>20:30 · Turuleta · 已订</span></div>
+            <div class="stat"><b>住宿</b><span>Palacio Pinello</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · Palacio Pinello
+Segovias, 1, Old Town, 41004 Seville, Spain</div>
+      <div class="note" style="margin-bottom:12px">主教座堂12:25已订。塞维利亚王宫目标14:30，需重新购买4张票。上午安排西班牙广场和公园，傍晚走河畔并在Triana看日落。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:15</div><div><div class="stop-title">Palacio Pinello附近早餐</div><div class="stop-meta">前一晚转车后在Santa Cruz轻松开始</div></div><span class="mode meal">早餐 · 约45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:00</div><div><div class="stop-title">Palacio Pinello → 西班牙广场</div><div class="stop-meta">穿过大学/San Telmo区域步行，或短途出租车</div></div><span class="mode taxi">步行20–25分钟 / 出租车10分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:30</div><div><div class="stop-title">西班牙广场</div><div class="stop-meta">桥梁、彩瓷省份壁龛及半圆形立面</div></div><span class="mode walk">40–45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:15</div><div><div class="stop-title">玛丽亚路易莎公园</div><div class="stop-meta">轻松阴凉散步；体力好再加Plaza de América</div></div><span class="mode walk">45–50分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:05</div><div><div class="stop-title">玛丽亚路易莎公园 → 凯旋广场</div><div class="stop-meta">经San Telmo/大学区域向北步行至主教座堂</div></div><span class="mode walk">步行 · 20–25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:35</div><div><div class="stop-title">西印度群岛总档案馆（可选）</div><div class="stop-meta">主教座堂旁免费简短历史景点；若时间晚则跳过</div></div><span class="mode museum">20–25分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:25</div><div><div class="stop-title">塞维利亚主教座堂及吉拉达塔（已订）</div><div class="stop-meta">固定时段 · 先登吉拉达塔，再参观教堂内部</div></div><span class="mode museum">80–90分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~13:50</div><div><div class="stop-title">主教座堂附近快速午餐</div><div class="stop-meta">选择三明治、Tapas等快餐，14:20前到王宫队伍</div></div><span class="mode meal">25–30分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">14:30</div><div><div class="stop-title">塞维利亚王宫（重新购买4张票）</div><div class="stop-meta">目标14:30入场 · 误买的5张订单失效后重购4张</div></div><span class="mode museum">约2小时15分</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~16:50</div><div><div class="stop-title">塞维利亚王宫 → 黄金塔</div><div class="stop-meta">经凯旋广场及San Telmo区域步行至河边</div></div><span class="mode walk">步行 · 15–20分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~17:10</div><div><div class="stop-title">黄金塔及瓜达尔基维尔河畔</div><div class="stop-meta">先看外观，再沿河轻松走向Isabel II桥</div></div><span class="mode walk">60–70分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~18:20</div><div><div class="stop-title">Triana及Calle Betis</div><div class="stop-meta">穿过Isabel II桥，日落前游览河畔</div></div><span class="mode walk">约1小时30分</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~20:08</div><div><div class="stop-title">瓜达尔基维尔河日落</div><div class="stop-meta">从Triana一侧看河流、桥梁及塞维利亚天际线</div></div><span class="mode walk">日落</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">20:30</div><div><div class="stop-title">Restaurante Turuleta Triana（已订）</div><div class="stop-meta">河畔日落后4人晚餐订位已确认</div></div><span class="mode meal">晚餐</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">After dinner</div><div><div class="stop-title">晚餐后返回Palacio Pinello</div><div class="stop-meta">步行穿过古城或乘短途出租车</div></div><span class="mode taxi">步行20–25分钟 / 出租车10分钟</span></div>
+          </div>
+      </div>
+    </div>
+
+    <div id="day6" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第6天</div>
+            <h2>塞维利亚至龙达自驾</h2>
+            <div class="route-line">Palacio Pinello → SIXT取车 → Zahara de la Sierra → Puerto de las Palomas → Grazalema → Setenil洞穴小镇 → 龙达 → 新桥日落 → Tragatá晚餐</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>租车</b><span>09:00 · SIXT La Negrilla</span></div>
+            <div class="stat"><b>景观路线</b><span>Zahara · Grazalema · Setenil</span></div>
+            <div class="stat"><b>驾驶时间</b><span>~3h30–4h total</span></div>
+            <div class="stat"><b>晚餐</b><span>20:15 · Tragatá · 已订</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · Apartamentos Martalia Áticos Deluxe
+Calle Torero Francisco Romero, 29400 Ronda, Spain</div>
+      <div class="note" style="margin-bottom:12px">全天为山路自驾。白色小镇以精华停留为主，注意天气及道路开放情况；傍晚抵达龙达，新桥附近看日落，20:15晚餐已订。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">07:30</div><div><div class="stop-title">早餐、退房并装车</div><div class="stop-meta">全员准备好，离开Palacio Pinello后直接去租车点</div></div><span class="mode meal">早餐 · 约40分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:15</div><div><div class="stop-title">Palacio Pinello → SIXT Sevilla La Negrilla</div><div class="stop-meta">C. Tipografía 10 · 4人带行李乘出租车最简单</div></div><span class="mode taxi">出租车 · 预留25–35分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:00</div><div><div class="stop-title">SIXT Sevilla La Negrilla取车（已订）</div><div class="stop-meta">确认驾驶人、自动/手动挡、行李空间及保险条款</div></div><span class="mode car">预留约30分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~09:30</div><div><div class="stop-title">塞维利亚 → Zahara de la Sierra</div><div class="stop-meta">经内陆道路前往Sierra de Grazalema</div></div><span class="mode car">自驾 · 1小时25分–1小时40分</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:05</div><div><div class="stop-title">Zahara de la Sierra观景散步</div><div class="stop-meta">停在村庄下方，穿过白色街道前往水库观景点；今天不爬城堡</div></div><span class="mode walk">45–50分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:55</div><div><div class="stop-title">Zahara → Puerto de las Palomas</div><div class="stop-meta">仅在天气良好且道路官方开放时驶上弯曲的CA-9104</div></div><span class="mode car">山路自驾 · 30–40分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~12:30</div><div><div class="stop-title">Puerto de las Palomas观景台</div><div class="stop-meta">短暂全景及拍照；只停在指定安全停车位</div></div><span class="mode car">停留 · 10–15分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~12:45</div><div><div class="stop-title">Puerto de las Palomas → Grazalema</div><div class="stop-meta">从山口谨慎下行进入Grazalema</div></div><span class="mode car">自驾 · 20–25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~13:10</div><div><div class="stop-title">Grazalema散步及午餐</div><div class="stop-meta">西班牙广场及附近白色街道，然后集中用餐</div></div><span class="mode meal">1小时15分–1小时25分</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~14:35</div><div><div class="stop-title">Grazalema → Setenil de las Bodegas</div><div class="stop-meta">穿过山地景观前往洞穴小镇</div></div><span class="mode car">自驾 · 55–65分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~15:35</div><div><div class="stop-title">停在Setenil洞穴街区外</div><div class="stop-meta">使用Los Caños等有标识的公共停车场；不要开进狭窄中心</div></div><span class="mode car">停车及步行 · 10–15分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~15:50</div><div><div class="stop-title">Setenil洞穴街道环线</div><div class="stop-meta">Cuevas del Sol → Cuevas de la Sombra → Calle Herrería / Bésame en este rincón</div></div><span class="mode walk">55–65分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~16:55</div><div><div class="stop-title">Setenil de las Bodegas → 龙达</div><div class="stop-meta">最后一段短途驾驶；直接前往酒店或预选公共停车场</div></div><span class="mode car">自驾 · 25–30分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~17:30</div><div><div class="stop-title">龙达入住并停车过夜</div><div class="stop-meta">停车后全程步行游览中心</div></div><span class="mode walk">休整 · 约30分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~18:00</div><div><div class="stop-title">Alameda del Tajo → 新桥 Puente Nuevo</div><div class="stop-meta">山谷观景台、斗牛场外观、西班牙广场及桥两侧</div></div><span class="mode walk">75–90分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~19:40</div><div><div class="stop-title">龙达日落</div><div class="stop-meta">在Alameda del Tajo / Mirador de Ronda看西面全景；约20:05离开去晚餐</div></div><span class="mode walk">至约20:05</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">20:15</div><div><div class="stop-title">Tragatá · Benito Gómez（已订）</div><div class="stop-meta">Calle Nueva 4 · 固定晚餐订位 · 从日落点步行前往，车保持停放</div></div><span class="mode meal">晚餐订位</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="day7" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第7天</div>
+            <h2>龙达晨游 · 国王步道 · 格拉纳达</h2>
+            <div class="route-line">龙达晨间观景 → El Chorro南入口停车 → 接驳车前往北入口 → 11:50国王步道 → 格拉纳达入住 → 加油还车 → 晚餐</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>国王步道</b><span>11:50 · 已订</span></div>
+            <div class="stat"><b>入口交通</b><span>南端停车 → 接驳车至北入口</span></div>
+            <div class="stat"><b>步行</b><span>约8公里 · 共3–4小时</span></div>
+            <div class="stat"><b>还车</b><span>21:00 · Granada station</span></div>
+            <div class="stat"><b>格拉纳达住宿</b><span>BiBo Palacio de Portago</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · BiBo Suites Palacio de Portago
+20 Calle San Matías, Granada City Centre, 18009 Granada, Spain</div>
+      <div class="note" style="margin-bottom:12px">国王步道11:50北入口门票已订。车停El Chorro南端，再乘接驳车去北入口；全程约8公里、3–4小时。回到格拉纳达后先入住，再于21:00前还车。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">07:15</div><div><div class="stop-title">早餐、退房并装车</div><div class="stop-meta">早起，观景后可立即离开龙达</div></div><span class="mode meal">约40分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:00</div><div><div class="stop-title">新桥及Alameda晨间观景台</div><div class="stop-meta">只走上方观景点看安静晨光；不下到峡谷下方小路</div></div><span class="mode walk">25–30分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:30</div><div><div class="stop-title">La Ciudad古城短游 → 取车</div><div class="stop-meta">过新桥快速看古城后立即返回；今天不进任何室内景点</div></div><span class="mode walk">20–25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:45–09:00</div><div><div class="stop-title">龙达 → El Chorro / 南入口</div><div class="stop-meta">直达El Chorro车站附近停车区；使用实时导航并预留山路波动</div></div><span class="mode car">自驾 · 1小时10分–1小时25分</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:00</div><div><div class="stop-title">El Chorro / 南端停车</div><div class="stop-meta">选择合法车站附近停车位；车内不要放可见行李或贵重物品，证件及水随身带</div></div><span class="mode car">停车及确认路线 · 约15分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:15</div><div><div class="stop-title">El Chorro → 北入口区域</div><div class="stop-meta">步行至车站旁接驳车站，乘车往El Kiosko；接驳车票与步道门票分开</div></div><span class="mode bus">等待及接驳 · 25–40分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:45</div><div><div class="stop-title">经短隧道前往北入口检查点</div><div class="stop-meta">走约1.5公里有照明隧道路段，不走2.7公里El Kiosko长路线</div></div><span class="mode walk">20–25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:15</div><div><div class="stop-title">北入口报到缓冲</div><div class="stop-meta">准备实名票和证件原件 · 验票、安全说明及领取头盔</div></div><span class="mode walk">提前30–35分钟抵达</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">11:50</div><div><div class="stop-title">国王步道 Caminito del Rey（已订）</div><div class="stop-meta">北入口固定时段 · 单向高架步道，穿过Gaitanes峡谷至El Chorro</div></div><span class="mode walk">共约3–4小时</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~15:15</div><div><div class="stop-title">南出口 → 还头盔 → 返回车辆</div><div class="stop-meta">完成最后下坡至El Chorro，还头盔后步行回停车处</div></div><span class="mode walk">目标15:15–15:45结束</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~15:30–15:45</div><div><div class="stop-title">El Chorro → 格拉纳达</div><div class="stop-meta">全员集合后立即出发；走直接路线并留意21:00还车时间</div></div><span class="mode car">自驾 · 1小时30分–1小时45分</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~17:15–17:30</div><div><div class="stop-title">格拉纳达停车并入住BiBo Palacio de Portago</div><div class="stop-meta">Calle San Matías 20 · 按酒店批准的停车/卸行李方式，不驶入限行街道</div></div><span class="mode car">约45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~18:15</div><div><div class="stop-title">酒店短暂休整</div><div class="stop-meta">换衣、休息并整理租车文件；还车后再吃晚餐</div></div><span class="mode walk">约30分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~18:45</div><div><div class="stop-title">取车、加油并前往格拉纳达车站</div><div class="stop-meta">使用租车协议认可的车站附近加油站并保留收据</div></div><span class="mode car">预留45–60分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~19:45</div><div><div class="stop-title">格拉纳达车站还车缓冲</div><div class="stop-meta">卸行李、拍摄车辆并完成还车，不要拖到21:00截止</div></div><span class="mode car">目标抵达时间</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~20:00</div><div><div class="stop-title">格拉纳达火车站还车（21:00截止）</div><div class="stop-meta">尽量提早归还；确认油量、里程并取得还车收据</div></div><span class="mode car">还车</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">After return</div><div><div class="stop-title">还车后乘出租车回市中心并晚餐</div><div class="stop-meta">返回酒店方向，在Calle San Matías / Realejo附近用餐</div></div><span class="mode meal">出租车及晚餐</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="day8" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第8天</div>
+            <h2>格拉纳达一日游</h2>
+            <div class="route-line">酒店 → 新广场 → 达罗河畔 → 阿拉伯浴场外观 → 阿尔拜辛区 → 圣尼古拉斯观景台 → 皇家礼拜堂 → AMBAR午餐 → 阿尔罕布拉宫及纳斯瑞德宫 → Generalife花园 → Tapas晚餐</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>阿尔罕布拉宫</b><span>14:30 · 已订</span></div>
+            <div class="stat"><b>皇家礼拜堂</b><span>Sunday · from 11:00</span></div>
+            <div class="stat"><b>主教座堂</b><span>Interior deferred</span></div>
+            <div class="stat"><b>日落</b><span>~19:50</span></div>
+            <div class="stat"><b>住宿</b><span>BiBo Palacio de Portago</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · BiBo Suites Palacio de Portago
+20 Calle San Matías, Granada City Centre, 18009 Granada, Spain</div>
+      <div class="note" style="margin-bottom:12px">纳斯瑞德宫14:30为严格入场时间，必须携带购票时绑定的护照/证件原件，并于14:15前到排队处。当天步行较多，上坡可改乘公交或出租车。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:00</div><div><div class="stop-title">BiBo Palacio de Portago附近早餐</div><div class="stop-meta">Calle San Matías 20 · 就近开始，准备以步行为主的一天</div></div><span class="mode meal">约45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:50</div><div><div class="stop-title">酒店 → 新广场 → Carrera del Darro</div><div class="stop-meta">步行约10分钟到新广场，再沿达罗河欣赏历史立面及阿尔罕布拉景观</div></div><span class="mode walk">35–40分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~09:20</div><div><div class="stop-title">El Bañuelo阿拉伯浴场外观及Paseo de los Tristes</div><div class="stop-meta">看历史浴场区域后继续沿河；内部稍晚开放，因此继续前往阿尔拜辛</div></div><span class="mode walk">35–40分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:00</div><div><div class="stop-title">阿尔拜辛小巷 → 圣尼古拉斯观景台</div><div class="stop-meta">穿过历史街区上坡，欣赏白天的阿尔罕布拉经典全景</div></div><span class="mode walk">45–50分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:50</div><div><div class="stop-title">圣尼古拉斯观景台 → 皇家礼拜堂</div><div class="stop-meta">乘公交或出租车下山，避免整上午走陡坡</div></div><span class="mode taxi">公交/出租车 · 15–25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">11:15</div><div><div class="stop-title">格拉纳达皇家礼拜堂</div><div class="stop-meta">天主教双王陵墓及祭衣室博物馆 · 周日11:00开始开放</div></div><span class="mode museum">40–45分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:05</div><div><div class="stop-title">Alcaicería旧丝绸市场及Bib-Rambla广场</div><div class="stop-meta">在旧丝绸市场小巷做短途氛围散步</div></div><span class="mode walk">约25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:30</div><div><div class="stop-title">AMBAR Cuisine d’Orient</div><div class="stop-meta">Calle Colcha 7 · 主教座堂附近阿拉伯/中东午餐 · 13:15前结束</div></div><span class="mode meal">午餐 · 约45分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">13:15</div><div><div class="stop-title">格拉纳达市中心 → 阿尔罕布拉宫</div><div class="stop-meta">出租车或C30/C32公交；预留安检、辨路及宫内步行时间</div></div><span class="mode bus">出租车/公交 · 约13:35抵达</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~13:40</div><div><div class="stop-title">查理五世宫及Alcazaba堡垒</div><div class="stop-meta">入场前精华游；14:10前开始前往纳斯瑞德宫队伍</div></div><span class="mode museum">30–35分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">14:30</div><div><div class="stop-title">纳斯瑞德宫（已订）</div><div class="stop-meta">固定入场时间 · 出示与门票绑定的证件原件</div></div><span class="mode museum">75–90分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~16:00</div><div><div class="stop-title">Partal花园及塔楼</div><div class="stop-meta">经连接纳斯瑞德宫与Generalife一侧的花园向东走</div></div><span class="mode walk">35–40分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~16:40</div><div><div class="stop-title">Generalife宫殿及花园</div><div class="stop-meta">水渠庭院、宫殿房间、水阶及花园观景点</div></div><span class="mode museum">75–90分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~18:10</div><div><div class="stop-title">返回格拉纳达市中心</div><div class="stop-meta">长时间步行后乘C30/C32公交或出租车</div></div><span class="mode bus">20–30分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~19:00</div><div><div class="stop-title">休息、饮品或弹性看日落</div><div class="stop-meta">轻松安排；上午已包含阿尔拜辛主要观景台</div></div><span class="mode walk">约19:50日落</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~20:15</div><div><div class="stop-title">格拉纳达Tapas晚餐</div><div class="stop-meta">按酒店位置选择Calle Navas、新广场或Realejo一带</div></div><span class="mode meal">晚餐</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="day9" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第9天</div>
+            <h2>格拉纳达至巴塞罗那 · 古城夜游</h2>
+            <div class="route-line">格拉纳达 → 巴塞罗那 → 酒店 → 哥特区 → 巴塞罗那主教座堂及国王广场 → 加泰罗尼亚音乐宫外观 → 高迪广场看圣家堂日落 → 酒店附近晚餐</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>Main transfer</b><span>Confirm 已订 service</span></div>
+            <div class="stat"><b>巴塞罗那计划</b><span>弹性安排抵达日晚间</span></div>
+            <div class="stat"><b>步行重点</b><span>哥特区</span></div>
+            <div class="stat"><b>日落目标</b><span>Sagrada Família · ~19:25</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · MH Apartments S. Familia
+Valencia, 423, Eixample, 08013 Barcelona, Spain</div>
+      <div class="note" style="margin-bottom:12px">抵达时间未确定，因此哥特区行程保持弹性。当天最重要的是19:25左右在高迪广场看圣家堂日落；若抵达晚，可直接前往酒店附近。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">Morning</div><div><div class="stop-title">退房并离开格拉纳达</div><div class="stop-meta">预留行李及火车站/机场时间；从BiBo Palacio de Portago乘出租车</div></div><span class="mode taxi">出租车及长途交通</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">Afternoon</div><div><div class="stop-title">抵达巴塞罗那 → Carrer de València 423</div><div class="stop-meta">入住或寄存行李，短暂休息后再开始</div></div><span class="mode bus">优先公共交通</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~16:30</div><div><div class="stop-title">酒店 → 哥特区</div><div class="stop-meta">从Verdaguer乘L4到Jaume I，经主教座堂小巷进入古城；若抵达晚则调整或取消</div></div><span class="mode bus">L4及步行 · 约25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~17:30</div><div><div class="stop-title">巴塞罗那主教座堂及国王广场</div><div class="stop-meta">以外观、罗马/中世纪街巷及历史广场为主；有时间体力才进内部</div></div><span class="mode walk">约45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~18:15</div><div><div class="stop-title">Sant Jaume广场 → 加泰罗尼亚音乐宫外观</div><div class="stop-meta">步行穿过历史中心看现代主义立面；本次不增加室内门票</div></div><span class="mode walk">35–45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~18:45</div><div><div class="stop-title">Urquinaona → 高迪广场</div><div class="stop-meta">从Urquinaona乘L4到Verdaguer，再沿Carrer de Provença步行至诞生立面对面的池畔观景点</div></div><span class="mode bus">L4及步行 · 25–30分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~19:15</div><div><div class="stop-title">高迪广场看圣家堂日落</div><div class="stop-meta">在教堂及池塘后方等待暮色；无需门票，酒店也很近</div></div><span class="mode walk">约19:25日落</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~20:00</div><div><div class="stop-title">圣家堂/酒店附近晚餐</div><div class="stop-meta">交通日就在附近结束；刻意不加入Port Vell及更长的El Born延伸路线</div></div><span class="mode meal">晚餐</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="day10" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第10天</div>
+            <h2>毕加索及高迪建筑日</h2>
+            <div class="route-line">El Born → 10:15毕加索博物馆 → 12:00巴特罗之家 → 14:30圣家堂 → 17:00古埃尔公园 → Gràcia晚餐</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>毕加索博物馆</b><span>10:15 · 已订</span></div>
+            <div class="stat"><b>巴特罗之家</b><span>12:00 · 已订</span></div>
+            <div class="stat"><b>圣家堂</b><span>14:30 · 已订</span></div>
+            <div class="stat"><b>古埃尔公园</b><span>17:00 · 已订</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · MH Apartments S. Familia
+Valencia, 423, Eixample, 08013 Barcelona, Spain</div>
+      <div class="note" style="margin-bottom:12px">四个定时景点均已订票。11:15离开毕加索博物馆，乘L4前往巴特罗之家；之后乘L2直达圣家堂，再乘V19上坡到古埃尔公园。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">08:45</div><div><div class="stop-title">El Born附近早餐</div><div class="stop-meta">选择Carrer de Montcada步行范围内餐厅，不赶时间地吃完</div></div><span class="mode meal">约45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:40</div><div><div class="stop-title">步行至巴塞罗那毕加索博物馆</div><div class="stop-meta">提前到Carrer de Montcada验票并应对安检队伍</div></div><span class="mode walk">约09:50抵达</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">10:15</div><div><div class="stop-title">巴塞罗那毕加索博物馆（已订）</div><div class="stop-meta">重点看毕加索早期巴塞罗那时期及《宫娥》展厅；即使没看完也要11:15离开</div></div><span class="mode museum">约60分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">11:15</div><div><div class="stop-title">毕加索博物馆 → 巴特罗之家</div><div class="stop-meta">步行6–8分钟至Jaume I → 乘L4黄线往Trinitat Nova → Passeig de Gràcia下车 → 向北步行约5分钟到43号</div></div><span class="mode bus">地铁L4 · 20–25分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:40</div><div><div class="stop-title">阿马特耶之家外观及巴特罗之家入场缓冲</div><div class="stop-meta">留在入口附近；不要在已订时段前再加米拉之家</div></div><span class="mode walk">15–20分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">12:00</div><div><div class="stop-title">巴特罗之家（已订）</div><div class="stop-meta">固定入场时间 · 常规参观约75分钟</div></div><span class="mode museum">约75分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">13:15</div><div><div class="stop-title">Passeig de Gràcia附近快速午餐</div><div class="stop-meta">选择外带、三明治或快餐，约13:40前结束</div></div><span class="mode meal">约25分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">13:40</div><div><div class="stop-title">巴特罗之家 → 圣家堂</div><div class="stop-meta">进入Passeig de Gràcia站 → 乘L2紫线往Badalona Pompeu Fabra → 直达Sagrada Família</div></div><span class="mode bus">地铁L2 · 15–20分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">14:30</div><div><div class="stop-title">圣家堂（固定）</div><div class="stop-meta">定时入场；遵守门票上的安检、塔楼及证件要求</div></div><span class="mode museum">约90分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~16:05</div><div><div class="stop-title">圣家堂 → 古埃尔公园</div><div class="stop-meta">向西走到Pg de Sant Joan–Travessera de Gràcia → 乘V19往Pl. Alfonso Comín → 在Ctra del Carmel附近公园上入口下车；当天查看TMB实时站点</div></div><span class="mode bus">步行及V19 · 35–45分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">17:00</div><div><div class="stop-title">古埃尔公园纪念区（已订）</div><div class="stop-meta">固定入场 · 高迪建筑、露台及傍晚城市景观</div></div><span class="mode museum">约2小时</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~19:10</div><div><div class="stop-title">古埃尔公园 → Gràcia</div><div class="stop-meta">乘24路下坡往加泰罗尼亚广场，在Gran de Gràcia / Travessera de Gràcia附近下车，再步行至Virreina或Sol广场</div></div><span class="mode bus">24路公交 · 20–30分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~19:45</div><div><div class="stop-title">Gràcia晚餐</div><div class="stop-meta">建筑密集日就近结束；之后按实际位置乘地铁或公交回酒店</div></div><span class="mode meal">晚餐</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="day11" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第11天</div>
+            <h2>布拉瓦海岸自驾</h2>
+            <div class="route-line">酒店 → Sants取车 → Marimurtra植物园精华 → Fenals或Cala Boadella海滩备选 → Tossa de Mar午餐及海滩 → Vila Vella古城墙 → 海岸短途步行 → 巴塞罗那</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>取车</b><span>Enterprise Sants · 07:30</span></div>
+            <div class="stat"><b>主要目的地</b><span>Tossa de Mar</span></div>
+            <div class="stat"><b>景观点</b><span>Marimurtra</span></div>
+            <div class="stat"><b>返程目标</b><span>约此前回到巴塞罗那 ~19:15</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · MH Apartments S. Familia
+Valencia, 423, Eixample, 08013 Barcelona, Spain</div>
+      <div class="note" style="margin-bottom:12px">Tossa de Mar是主目的地；Marimurtra只看精华，避免排长队拍照。Fenals或Cala Boadella二选一且完全可跳过。带泳衣、速干毛巾和薄外套，但不强求下水。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">06:45</div><div><div class="stop-title">酒店 → Enterprise Barcelona Sants</div><div class="stop-meta">步行至Sagrada Família站 → 乘L5直达Barcelona Sants → 按车站指示到Enterprise确认取车点</div></div><span class="mode bus">地铁L5 · 预留约40分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">07:30</div><div><div class="stop-title">取车并离开巴塞罗那</div><div class="stop-meta">预留验车及手续时间；争取约08:00开出</div></div><span class="mode car">自驾 · 约1小时15分</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~09:15</div><div><div class="stop-title">抵达Marimurtra并停车</div><div class="stop-meta">09:30开门前抵达，因为附近停车有限；园内有坡道和台阶</div></div><span class="mode car">抵达缓冲</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:30</div><div><div class="stop-title">Marimurtra植物园（首场）</div><div class="stop-meta">沿主要路线前往地中海观景点及Linnaeus Temple；不要为拍照排长队</div></div><span class="mode walk">60–75分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:45</div><div><div class="stop-title">离开Blanes → Lloret附近海滩备选</div><div class="stop-meta">Fenals交通更方便，Cala Boadella较安静；停留25–30分钟。若停车麻烦或有人疲劳，直接去Tossa</div></div><span class="mode car">可选停留</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~12:00–12:30</div><div><div class="stop-title">抵达Tossa de Mar并午餐</div><div class="stop-meta">停车一次后全程步行；正式散步前在古城或海滨附近用餐</div></div><span class="mode meal">约60分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~13:15</div><div><div class="stop-title">Platja Gran及可选游泳</div><div class="stop-meta">沿中世纪城墙下散步；仅水温、风势及体力合适时下水，之后换衣再登Vila Vella</div></div><span class="mode walk">45–60分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~14:15</div><div><div class="stop-title">Vila Vella古城及城墙</div><div class="stop-meta">城门、塔楼、老街、灯塔区域及Cala es Codolar景观</div></div><span class="mode walk">约1小时45分</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~16:00</div><div><div class="stop-title">Cala es Codolar及短途Camí de Ronda海岸步道</div><div class="stop-meta">只走短程往返看悬崖海景；变累前折返</div></div><span class="mode walk">约45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~16:45</div><div><div class="stop-title">饮品及最后的Tossa休闲时间</div><div class="stop-meta">休息、重返海滩或逛古城小巷，不等日落</div></div><span class="mode meal">约45分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">17:30–18:00</div><div><div class="stop-title">返回Barcelona Sants</div><div class="stop-meta">取消Tossa日落及晚餐以保护体力；按要求加油并遵守Enterprise还车流程</div></div><span class="mode car">自驾 · 1小时20分–1小时40分</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~19:15–20:15</div><div><div class="stop-title">Sants → 酒店及简单晚餐</div><div class="stop-meta">还车后乘L5直达Sagrada Família方向，在酒店附近用餐</div></div><span class="mode bus">L5及晚餐</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="day12" class="day-panel">
+      <div class="hero-card">
+        <div class="hero-grid">
+          <div>
+            <div class="kicker">第12天</div>
+            <h2>巴塞罗那最后一天 · 晚间高铁回马德里</h2>
+            <div class="route-line">酒店 → 09:30圣保罗现代主义建筑群 → 取行李 → L5到Sants并寄存行李 → 蒙特惠奇山备选 → Sants → 马德里高铁</div>
+          </div>
+          <div class="quick-stats">
+            <div class="stat"><b>最值得补充景点</b><span>Sant Pau</span></div>
+            <div class="stat"><b>参观时长</b><span>45–60分钟</span></div>
+            <div class="stat"><b>可选</b><span>蒙特惠奇山观景点</span></div>
+            <div class="stat"><b>硬性截止</b><span>已确认的马德里火车</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note hotel-note" style="margin-bottom:8px">今晚住宿 · AC Hotel by Marriott Madrid Airport
+Calle Rejas, 5, 28022 Coslada, Spain</div>
+      <div class="note" style="margin-bottom:12px">圣保罗医院是目前最值得补上的巴塞罗那景点。先确认回马德里火车时间，再决定是否购买09:30门票。只有火车18:00以后才考虑蒙特惠奇山。</div>
+
+      <div class="itinerary">
+        <div class="stop">
+          <div class="stop-head"><div class="time">~08:30</div><div><div class="stop-title">退房并把行李留在酒店</div><div class="stop-meta">附近晨游只带随身小包</div></div><span class="mode walk">酒店</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">09:30</div><div><div class="stop-title">圣保罗现代主义建筑群（推荐）</div><div class="stop-meta">Domènech i Montaner设计的旧医院建筑群、彩砖馆舍及花园；比高迪景点更安静</div></div><span class="mode museum">45–60分钟</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~10:40</div><div><div class="stop-title">取行李 → Barcelona Sants</div><div class="stop-meta">回酒店取包，再从Sagrada Família乘L5直达Sants Estació</div></div><span class="mode bus">L5 · 总计预留45–60分钟</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~11:45</div><div><div class="stop-title">在Sants车站内或附近寄存行李</div><div class="stop-meta">提前确认运营商和营业时间；护照、车票及贵重物品随身携带</div></div><span class="mode walk">火车日安排</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~12:00</div><div><div class="stop-title">蒙特惠奇山行程（可选）</div><div class="stop-meta">从Sants Estació乘L3到Paral·lel → 转含在票内的Montjuïc Funicular到Parc de Montjuïc → 再乘缆车或150路往城堡及观景点</div></div><span class="mode bus">仅当火车≥18:00</span></div>
+          </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">~15:30</div><div><div class="stop-title">返回Barcelona Sants</div><div class="stop-meta">按已订发车时间提前调整；取行李、购买火车食物并找到安检/候车区</div></div><span class="mode bus">L3 / 出租车备选</span></div>
+        </div>
+
+        <div class="stop">
+          <div class="stop-head"><div class="time">Evening</div><div><div class="stop-title">巴塞罗那 → 马德里高铁</div><div class="stop-meta">带行李至少提前45–60分钟进入Barcelona Sants</div></div><span class="mode train">以已订时间为准</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="transport" class="panel"><div class="hero-card"><div class="kicker">交通</div><h2>全程交通汇总</h2><div class="route-line">详细时间和路线以“每日行程”为准；以下为全程常用交通及付款提示。</div></div><h3 class="section-title">马德里交通与付款</h3><table class="compact-table">
+<tr><th>机场出租车</th><td>使用官方出租车站或Cabify；可刷卡/感应支付。Cabify应用可选。</td></tr>
+<tr><th>EMT市内公交</th><td>上车可刷Visa、Mastercard、Amex或Apple Pay/Google Pay，无需应用。</td></tr>
+<tr><th>地铁单程票</th><td>在支持的闸机可直接刷银行卡或手机购买单程。</td></tr>
+<tr><th>10次Metrobús</th><td>充值到Multi/TTP卡；多人可共用一张卡，但每位乘客都要刷一次。</td></tr>
+<tr><th>常用应用</th><td>Google Maps / Apple Maps为主；Citymapper适合比较路线；Cabify用于打车。</td></tr>
+</table><h3 class="section-title">科尔多瓦中转提示</h3><table class="compact-table">
+<tr><th>车站 → 古城</th><td>4人短暂停留优先乘出租车，直接到Judería / Mezquita区域。</td></tr>
+<tr><th>返回车站</th><td>在清真寺旁Calle Torrijos官方出租车站上车；18:10–18:15必须离开，赶19:04火车。</td></tr>
+<tr><th>公交备选</th><td>AUCORSA 12路连接Puerta del Puente与火车站，可刷非接触银行卡或手机。</td></tr>
+<tr><th>行李</th><td>提前预订并确认车站区域的寄存点，不要默认火车站内一定有柜。</td></tr>
+</table></section><section id="essentials" class="panel"><div class="hero-card"><div class="kicker">重要事项</div><h2>全程住宿及共同提示</h2><div class="route-line">酒店地址、固定订票、时间限制及全程注意事项。</div></div><h3 class="section-title">住宿</h3><div class="cards"><div class="card"><h3>9月27–30日 · 马德里</h3><p><strong>STYLISH NEST 1BD PLAZA MAYOR - SOL</strong><br>Calle de Santa Isabel, 26, Madrid City Center, 28012 Madrid, Spain</p></div><div class="card"><h3>9月30日–10月2日 · 塞维利亚</h3><p><strong>Palacio Pinello</strong><br>Segovias, 1, Old Town, 41004 Seville, Spain</p></div><div class="card"><h3>10月2–3日 · 龙达</h3><p><strong>Apartamentos Martalia Áticos Deluxe</strong><br>Calle Torero Francisco Romero, 29400 Ronda, Spain</p></div><div class="card"><h3>10月3–5日 · 格拉纳达</h3><p><strong>BiBo Suites Palacio de Portago</strong><br>20 Calle San Matías, Granada City Centre, 18009 Granada, Spain · 入住前确认限行区认可的卸行李及停车方式。</p></div><div class="card"><h3>10月5–8日 · 巴塞罗那</h3><p><strong>MH Apartments S. Familia</strong><br>Valencia, 423, Eixample, 08013 Barcelona, Spain</p></div><div class="card"><h3>10月8–9日 · 马德里机场</h3><p><strong>AC Hotel by Marriott Madrid Airport</strong><br>Calle Rejas, 5, 28022 Coslada, Spain</p></div></div><h3 class="section-title">共同提示</h3><div class="cards">
+<div class="card"><h3>同行</h3><p>4人同行。换乘时以行李方便为优先，避免不必要的车站转换。</p></div>
+<div class="card"><h3>行程风格</h3><p>以历史古城、文化和步行为主；减少换酒店次数；除关键景点外不安排过多博物馆。</p></div>
+<div class="card"><h3>已订固定项目</h3><p>托莱多及塞哥维亚往返火车、科尔多瓦16:30清真寺主教座堂、塞维利亚主教座堂、国王步道11:50、阿尔罕布拉宫14:30、毕加索博物馆10:15、巴特罗之家12:00、圣家堂14:30、古埃尔公园17:00，以及行程中标注的餐厅。</p></div>
+<div class="card"><h3>时间原则</h3><p>所有定时票均提前抵达。火车至少提前45–60分钟到站；自驾停车、加油及还车均预留缓冲。</p></div>
+</div></section><div class="footer">所有步行时间均为估算，可能因具体入口、步速、人流及过街情况而变化。</div>
+
+</div>
+
+<script>
+document.querySelectorAll('.main-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.main-tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.panel).classList.add('active');
+  });
+});
+document.querySelectorAll('.day-chip').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.day-chip').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.day-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.day).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
